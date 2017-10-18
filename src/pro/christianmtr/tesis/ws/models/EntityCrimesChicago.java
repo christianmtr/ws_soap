@@ -199,4 +199,5 @@ public class EntityCrimesChicago {
     public void setLocation(String location) {
         Location = location;
     }
+
 }
