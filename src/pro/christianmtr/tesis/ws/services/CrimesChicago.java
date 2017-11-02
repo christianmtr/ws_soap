@@ -3,12 +3,16 @@ package pro.christianmtr.tesis.ws.services;
 import pro.christianmtr.tesis.ws.models.DAOCrimesChicago;
 import pro.christianmtr.tesis.ws.models.EntityCrimesChicago;
 
+import javax.jws.WebMethod;
+import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebService
+@WebService(serviceName = "CrimesChicago")
 public class CrimesChicago {
+
+    @WebMethod(operationName = "allCrimes")
     public List<String[]> allCrimes() {
         DAOCrimesChicago controller = new DAOCrimesChicago();
         List<EntityCrimesChicago> crimes = controller.getAllCrimesChicago();
@@ -45,7 +49,8 @@ public class CrimesChicago {
         return finalList;
     }
 
-    public List<String[]> someCrimes(String q) {
+    @WebMethod(operationName = "someCrimes")
+    public List<String[]> someCrimes(@WebParam(name = "q") String q) {
         DAOCrimesChicago controller = new DAOCrimesChicago();
         List<EntityCrimesChicago> crimes = controller.getSomeCrimesChicago(Integer.parseInt(q));
 
@@ -81,7 +86,8 @@ public class CrimesChicago {
         return finalList;
     }
 
-    public String[] oneCrime(String id) {
+    @WebMethod(operationName = "oneCrime")
+    public String[] oneCrime(@WebParam(name = "id") String id) {
         DAOCrimesChicago controller = new DAOCrimesChicago();
         EntityCrimesChicago one_crime = controller.getOneCrimeChicago(id);
 
